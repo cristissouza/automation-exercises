@@ -6,7 +6,7 @@ Para instalar as dependências do projeto, em cada pasta de teste, ***ui, tdd e 
 
 **Executando os teste de UI**
 * Execute o webdriver para rodar os teste de UI executando o comando ***npm run webdriver:update*** 
-  Em seguida execute o comando ***npm run webdriver:start***
+* Em seguida execute o comando ***npm run webdriver:start***
 * Para rodar os testes, execute o comando  ***npm run test*** 
 
 **Executando os teste de TDD**
