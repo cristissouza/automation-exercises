@@ -11,7 +11,7 @@ class SearchDestination {
     this.roomTypeOnePerson = $$('.roomtype-btn__wrap').get(0);
     this.sortBySelect = $('[data-qa="sorting"]');
     this.sortByDistanceOnly = $('option[value="3"]');
-    this.accomodationDetails = $('[data-qa="item-location-details"]');
+    this.accomodationDetails = $$('[data-qa="item-location-details"]').get(0);
     this.moreAmenitiesBtn = $('.expand-amenities > button[type="button"]');
     this.roomFacilities = $$('[itemscope="itemscope"] li.unordered-list__item');
     this.roomPrice = $$('[data-qa="recommended-price"]').get(0);
@@ -19,6 +19,7 @@ class SearchDestination {
     this.hotelName = $$('[data-qa="item-name"]').get(0);
     this.siteNameOffering = $$('[data-qa="recommended-price-partner"]').get(0);
     this.loading = $('.loader-text center-x');
+    this.expandAmendities = $('.expand-amenities');
   }
 
   async inputDestination(destination) {
@@ -43,10 +44,10 @@ class SearchDestination {
     return this.sortByDistanceOnly.click();
   }
 
-  viewMoreAmenities() {
-    this.accomodationDetails.click();
-    helper.waitForElement(this.moreAmenitiesBtn);
-    this.moreAmenitiesBtn.click();
+  async viewMoreAmenities() {
+    await this.accomodationDetails.click();
+    await helper.waitForElement(this.moreAmenitiesBtn);
+    return this.moreAmenitiesBtn.click();
   }
 
   getAllAmenitiesRoom() {
