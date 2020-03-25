@@ -29,15 +29,13 @@ When('Apply the filters for one person room and sort by distance only', async ()
   await helper.waitForElementNotPresent(trivago.loading);
   await helper.waitForElement(trivago.hotelName);
   await trivago.chooseSortBy();
-  await browser.sleep(5000);
-  // await helper.waitForElement(trivago.loading);// breaking
+  await browser.sleep(5000); // remove
   await helper.waitForElement(trivago.hotelName);
   await helper.waitForElementNotPresent(trivago.loading);
 });
 
 When('Decide to see the more details information', async () => {
   await trivago.viewMoreAmenities();
-  await helper.waitForElement(trivago.roomFacilities);
 });
 
 
@@ -67,7 +65,7 @@ Then('I can see the the hotel number of stars', async () => {
 });
 
 Then('I can see the room facilities', async () => {
-  const facilities = await helper.waitForElement(trivago.roomFacilities);
+  const facilities = await helper.waitForElement(trivago.expandAmendities);
   const amenitiesRoom = await trivago.getAllAmenitiesRoom();
   expect(facilities).to.equal(true);
   const print = `The site room facilities is: ${amenitiesRoom}`;
