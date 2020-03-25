@@ -25,4 +25,4 @@ You will need the following things installed on your machine.
 ### To run the Tests
 * npm run webdriver: update
 * npm run webdriver:start
-* npm run test`
+* npm run test
