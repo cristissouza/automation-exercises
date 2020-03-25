@@ -30,8 +30,9 @@ When('Apply the filters for one person room and sort by distance only', async ()
   await helper.waitForElement(trivago.hotelName);
   await trivago.chooseSortBy();
   await browser.sleep(5000);
-  await helper.waitForElementNotPresent(trivago.loading);
+  // await helper.waitForElement(trivago.loading);// breaking
   await helper.waitForElement(trivago.hotelName);
+  await helper.waitForElementNotPresent(trivago.loading);
 });
 
 When('Decide to see the more details information', async () => {
@@ -49,14 +50,26 @@ Then('I can see the site name that has the offer', async () => {
   console.log(print);
 });
 
-Then('I can see the room price', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see the room price', async () => {
+  const priceRoom = await helper.waitForElement(trivago.roomPrice);
+  const firstRoomPricePresented = await trivago.getRoomPrice();
+  expect(priceRoom).to.equal(true);
+  const print = `The site room price is: ${firstRoomPricePresented}`;
+  console.log(print);
+});
 
-Then('I can see the the hotel number of stars', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see the the hotel number of stars', async () => {
+  const starsClassification = await helper.waitForElement(trivago.numberStars);
+  const firstHotelStars = await trivago.getNumberStars();
+  expect(starsClassification).to.equal(true);
+  const print = `The site number os starts: ${firstHotelStars}`;
+  console.log(print);
+});
 
-Then('I can see the room facilities', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see the room facilities', async () => {
+  const facilities = await helper.waitForElement(trivago.roomFacilities);
+  const amenitiesRoom = await trivago.getAllAmenitiesRoom();
+  expect(facilities).to.equal(true);
+  const print = `The site room facilities is: ${amenitiesRoom}`;
+  console.log(print);
+});
