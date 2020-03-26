@@ -55,7 +55,7 @@ Then('I can see how many items the discourse have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for discourse are ${print.length}`);
+    console.log(`The number of topics for discourse are ${print.length}`);
   });
 });
 
@@ -64,7 +64,7 @@ Then('I can see how many items the uncategorized have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for uncategorized are ${print.length}`);
+    console.log(`The number of topics for uncategorized are ${print.length}`);
   });
 });
 
@@ -73,7 +73,7 @@ Then('I can see how many items the movies have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for movie are ${print.length}`);
+    console.log(`The number of topics for movie are ${print.length}`);
   });
 });
 
@@ -82,7 +82,7 @@ Then('I can see how many items the videos have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for video are ${print.length}`);
+    console.log(`The number of topics for video are ${print.length}`);
   });
 });
 
@@ -91,7 +91,7 @@ Then('I can see how many items the gaming have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for gaming are ${print.length}`);
+    console.log(`The number of topics for gaming are ${print.length}`);
   });
 });
 
@@ -100,7 +100,7 @@ Then('I can see how many items the tech have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for tech are ${print.length}`);
+    console.log(`The number of topics for tech are ${print.length}`);
   });
 });
 
@@ -109,7 +109,7 @@ Then('I can see how many items the general have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for general are ${print.length}`);
+    console.log(`The number of topics for general are ${print.length}`);
   });
 });
 
@@ -118,7 +118,7 @@ Then('I can see how many items the school have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for school are ${print.length}`);
+    console.log(`The number of topics for school are ${print.length}`);
   });
 });
 
@@ -127,7 +127,7 @@ Then('I can see how many items the sports have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for sports are ${print.length}`);
+    console.log(`The number of topics for sports are ${print.length}`);
   });
 });
 
@@ -136,7 +136,7 @@ Then('I can see how many items the pics have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for pics are ${print.length}`);
+    console.log(`The number of topics for pics are ${print.length}`);
   });
 });
 
@@ -145,7 +145,7 @@ Then('I can see how many items the music have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for music are ${print.length}`);
+    console.log(`The number of topics for music are ${print.length}`);
   });
 });
 
@@ -154,6 +154,6 @@ Then('I can see how many items the pets have', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The number of topic for pets are ${print.length}`);
+    console.log(`The number of topics for pets are ${print.length}`);
   });
 });
