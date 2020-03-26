@@ -40,6 +40,18 @@ When('I search by a specific {string}', { timeout: 40000 }, async (string) => {
 
 
 // Beginning of THEN  steps
+
+Then('I can see the topic with the largest number of view', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.ViewClassification();
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The topic with the largest number of views print is ${print[0]}`);
+  });
+});
+
 Then('I can see the description of all lock topics', async () => {
   await helper.waitForElement(discoursePrint.category);
   await discoursePrint.getTopicDescription().then((elem) => {

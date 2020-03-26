@@ -13,7 +13,14 @@ class DemoPage {
     this.categoryItemsNumber = $$('td.main-link.clearfix');
     this.topics = element.all(by.css('link-top-line'));
     this.categoryStatus = $$('.category-status');
+    this.numberView = $$('.num.views').get(1);
+    this.viewButton = $('[data-sort-order="views"]');
   }
+
+  ViewClassification() {
+    return this.viewButton.click();
+  }
+
 
   categorySelect() {
     return this.category.click();
