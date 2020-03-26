@@ -45,7 +45,7 @@ Then('I can see the description of all lock topics', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(print.length);
+    console.log('THIS STEP IS NOT FINISHED');
   });
 });
 
