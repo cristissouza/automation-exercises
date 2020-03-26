@@ -7,10 +7,10 @@ const {
 const { browser } = require('protractor');
 const helper = require('../utils/helper');
 
-const discoursePrintInformation = require('../page_objects/demo.page');
+const discoursePrint = require('../page_objects/demo.page');
 const dircourseHome = require('../page_objects/discourseHome.page');
 
-setDefaultTimeout(30 * 1000);
+setDefaultTimeout(15 * 1000);
 
 // Beginning of GIVEN  steps
 Given('I am on Dircourse home page', () => {
@@ -20,87 +20,140 @@ Given('I am on Dircourse home page', () => {
 
 
 // Beginning of WHEN  steps
-When('I decide to see the Demo topic', () => {
-  dircourseHome.goToDemoPage();
+When('I decide to see the Demo topic', async () => {
+  await helper.waitForElementToBeClickable(dircourseHome.demoMenu);
+  await dircourseHome.goToDemoPage();
+  await browser.getAllWindowHandles().then(async (handles) => {
+    await browser.switchTo().window(handles[0]).then(async () => {
+      const getPageUrl = await browser.getCurrentUrl();
+      expect(getPageUrl).to.equal('https://www.discourse.org/');
+    });
+    await browser.driver.close();
+    await browser.switchTo().window(handles[1]);
+  });
 });
 
 When('I search by a specific {string}', { timeout: 40000 }, async (string) => {
-  await browser.getAllWindowHandles().then(async (handles) => {
-    await browser.switchTo().window(handles[1]).then(async () => {
-      const getPageUrl = await browser.getCurrentUrl();
-      expect(getPageUrl).to.equal('https://try.discourse.org/');
-
-      await discoursePrintInformation.categorySelect();
-      await discoursePrintInformation.chooseCategory();
-      await helper.waitForElementNotPresent(discoursePrintInformation.discourseCategory);
-      await helper.waitForElement(discoursePrintInformation.categoryItemsNumber);
-    });
-    // await browser.driver.close();
-    // await browser.switchTo().window(handles[0]);
-  });
+  await discoursePrint.categorySelect();
+  await discoursePrint.chooseCategory(string);
 });
 
 
 // Beginning of THEN  steps
-Then('I can see how many items the {string} have', async (string) => {
-  const items = await discoursePrintInformation.numberItemsByCategory();
-  browser.sleep(5000);
-
-  console.log(`the number of items are : ${items}`);
+Then('I can see the description of all lock topics', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(print.length);
+  });
 });
 
-
-Then('I can see the description of all lock topics', () => {
-  discoursePrintInformation.chooseCategory();
-});
 
 Then('I can see how many items the discourse have', async () => {
-  const viewCategoryList = await helper.waitForElement(discoursePrintInformation.categoryItemsNumber);
-  await expect(viewCategoryList).to.equal(true);
-  const categoryItemLenght = discoursePrintInformation.numberItemsByCategory();
-  console.log(`The number of topic for discourse is ${categoryItemLenght}`);
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for discourse are ${print.length}`);
+  });
 });
 
-Then('I can see how many items the uncategorized have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the uncategorized have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for uncategorized are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the movies have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the movies have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for movie are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the videos have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the videos have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for video are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the gaming have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the gaming have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for gaming are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the tech have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the tech have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for tech are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the general have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the general have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for general are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the school have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the school have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for school are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the sports have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the sports have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for sports are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the pics have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the pics have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for pics are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the music have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the music have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for music are ${print.length}`);
+  });
+});
 
-Then('I can see how many items the pets have', () =>
-// Write code here that turns the phrase above into concrete actions
-  'pending');
+Then('I can see how many items the pets have', async () => {
+  await helper.waitForElement(discoursePrint.category);
+  await discoursePrint.getTopicDescription().then((elem) => {
+    const result = elem.toString().trim();
+    const print = result.split(',');
+    console.log(`The number of topic for pets are ${print.length}`);
+  });
+});
