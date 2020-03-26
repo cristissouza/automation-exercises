@@ -48,7 +48,7 @@ Then('I can see the topic with the largest number of view', async () => {
   await discoursePrint.getTopicDescription().then((elem) => {
     const result = elem.toString().trim();
     const print = result.split(',');
-    console.log(`The topic with the largest number of view print is ${print[0]}`);
+    console.log(`The topic with the largest number of views print is ${print[0]}`);
   });
 });
 
