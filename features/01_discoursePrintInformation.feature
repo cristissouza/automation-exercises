@@ -9,6 +9,9 @@ Feature: View information on Discourse web page
 Scenario: Print the description of all lock topics
     Then I can see the description of all lock topics
 
+Scenario: Print the topic title that has the largest number of views
+    Then I can see the topic with the largest number of view
+
 Scenario Outline: Print the number of items for each category and those that doesn’t have category
     When I search by a specific "<category>" 
     Then I can see how many items the <category> have
