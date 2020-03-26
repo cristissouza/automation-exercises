@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-extraneous-dependencies */
-const { browser, ExpectedConditions } = require('protractor');
+const { browser, ExpectedConditions, protractor } = require('protractor');
 
 class Helper {
   openPage(url) {
@@ -25,26 +25,10 @@ class Helper {
     return browser.wait(ExpectedConditions.urlIs(url), 15000);
   }
 
-  async searchSelectOption(elem, searchArea, option, searchInput) {
-    await elem.click();
-    await this.waitForElementToBeClickable(searchArea);
-    await searchArea.sendKeys(searchInput);
-    await this.waitForElementToBeClickable(option);
-    return option.click();
-  }
-
-  async chooseSelect(elem, option) {
-    await this.waitForElementToBeClickable(elem);
-    await elem.click();
-    await this.waitForElement(option);
-    return option.click();
-  }
-
-  async searchElement(searchArea, searchItem, selectItem) {
-    await this.waitForElementToBeClickable(searchArea);
-    await searchArea.click();
-    await searchArea.sendKeys(searchItem);
-    return selectItem.click();
+  async searchElement(searchArea, input) {
+    await this.waitForElement(searchArea);
+    await searchArea.sendKeys(input);
+    return searchArea.sendKeys(protractor.Key.ENTER);
   }
 }
 module.exports = new Helper();
